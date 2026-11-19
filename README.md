@@ -12,8 +12,13 @@
 ## 在线预览
 
 ```
-https://daimeng-134.github.io/clay-site-demo/
+官网      https://daimeng-134.github.io/clay-site-demo/
+交付页    https://daimeng-134.github.io/clay-site-demo/start.html
+二维码    https://daimeng-134.github.io/clay-site-demo/qr.png
+素材包    https://daimeng-134.github.io/clay-site-demo/kit/
 ```
+
+给客户扫的二维码指向 `start.html`：里面有原站入口、素材包下载、一键复制指令、四步操作。
 
 14 个静态页面：首页、服务、案例列表、4 个案例详情、关于、联系、404、robots、sitemap。
 

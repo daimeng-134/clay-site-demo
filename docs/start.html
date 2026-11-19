@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>官网复刻 · 扫码即用</title>
+<meta name="description" content="把「知造科技」官网的前端复刻到你自己的豆包里：下载素材包、上传、粘一段话，三分钟出结果。">
+<style>
+  :root{
+    --accent:#E07A5F; --accent-d:#C46248; --accent-l:#FBEDE7; --accent-bd:#F2C9BC;
+    --ink:#3B2F2A; --ink-2:#8B7A6F; --bg:#FDF4EC; --surface:#fff; --border:#F1E2D7;
+    --r:14px; --shadow:0 4px 14px -6px rgba(140,95,70,.28);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7; font-size:16px;
+  }
+  .wrap{max-width:680px; margin:0 auto; padding:28px 20px 64px}
+  header{display:flex; align-items:center; gap:10px; margin-bottom:28px}
+  .mark{width:36px;height:36px;border-radius:11px;background:var(--accent-l);
+    display:grid;place-items:center;flex:none}
+  .mark svg{width:20px;height:20px}
+  .brand{font-weight:600;font-size:16px;letter-spacing:.01em}
+  .brand small{display:block;font-size:11px;letter-spacing:.14em;color:var(--ink-2);font-weight:400}
+  h1{font-size:29px;line-height:1.28;margin:0 0 10px;letter-spacing:-.01em}
+  .lead{color:var(--ink-2);margin:0 0 26px;font-size:15px}
+  .pill{display:inline-block;background:var(--accent-l);color:var(--accent-d);
+    border:1px solid var(--accent-bd);border-radius:999px;padding:3px 11px;
+    font-size:12px;font-weight:500;margin-bottom:16px}
+  section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);
+    padding:20px;margin-bottom:14px;box-shadow:var(--shadow)}
+  h2{font-size:16px;margin:0 0 14px;display:flex;align-items:center;gap:9px}
+  .num{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;
+    font-size:12px;display:grid;place-items:center;flex:none;font-weight:600}
+  ol.steps{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol.steps li{position:relative;padding-left:30px;margin-bottom:14px;font-size:15px}
+  ol.steps li:last-child{margin-bottom:0}
+  ol.steps li::before{counter-increment:s;content:counter(s);
+    position:absolute;left:0;top:2px;width:20px;height:20px;border-radius:50%;
+    background:var(--accent-l);color:var(--accent-d);font-size:12px;font-weight:600;
+    display:grid;place-items:center}
+  .btn{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    background:var(--accent);color:#fff;text-decoration:none;border-radius:11px;
+    padding:13px 16px;font-weight:600;font-size:15px;margin-bottom:10px;
+    transition:transform .14s ease, background .14s ease}
+  .btn:hover{background:var(--accent-d);transform:translateY(-1px)}
+  .btn.ghost{background:var(--surface);color:var(--ink);border:1px solid var(--border);
+    box-shadow:none;font-weight:500}
+  .btn.ghost:hover{background:var(--accent-l);border-color:var(--accent-bd);transform:none}
+  .btn .meta{font-size:12px;font-weight:400;opacity:.8;white-space:nowrap}
+  pre{background:#2E2622;color:#F6E9DE;border-radius:11px;padding:16px;
+    overflow:auto;font-size:12.5px;line-height:1.65;margin:0 0 10px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;max-height:340px}
+  .row{display:flex;gap:10px;flex-wrap:wrap}
+  .row>*{flex:1 1 190px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{text-align:left;padding:9px 0;border-bottom:1px solid var(--border);vertical-align:top}
+  th{color:var(--ink-2);font-weight:500;font-size:12.5px;white-space:nowrap;width:38%}
+  tr:last-child td,tr:last-child th{border-bottom:0}
+  code{background:var(--accent-l);color:var(--accent-d);padding:1px 6px;
+    border-radius:5px;font-size:.9em;font-family:ui-monospace,Menlo,Consolas,monospace}
+  .note{font-size:13px;color:var(--ink-2);margin:10px 0 0}
+  .warn{background:#FDF1E3;border:1px solid #F2D9BC;border-radius:11px;
+    padding:13px 15px;font-size:13.5px;color:#7A5A34;margin-top:14px}
+  footer{margin-top:26px;font-size:12.5px;color:var(--ink-2);text-align:center;line-height:1.9}
+  .copied{color:var(--accent-d)!important}
+  @media (max-width:420px){h1{font-size:25px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#C46248" stroke-width="1.8"
+           stroke-linejoin="round" stroke-linecap="round">
+        <path d="M4 8.5 12 4l8 4.5v7L12 20l-8-4.5Z"/><path d="M12 12v8M12 12l8-4.5M12 12 4 7.5"/>
+      </svg>
+    </span>
+    <span class="brand">知造科技<small>ZHIZAO</small></span>
+  </header>
+
+  <span class="pill">扫码交付 · 给客户自己复刻</span>
+  <h1>用你自己的豆包，<br>把这个官网复刻出来</h1>
+  <p class="lead">不用装任何东西。下载素材包，传给豆包，粘一段话，三分钟出一份能打开的单页网页。</p>
+
+  <section>
+    <h2><span class="num">1</span>先看原站</h2>
+    <a class="btn" href="./" target="_blank" rel="noopener">
+      打开完整官网 <span class="meta">14 个页面</span>
+    </a>
+    <a class="btn ghost" id="tunnelLink" href="#" target="_blank" rel="noopener" hidden>
+      看本地展示机上的实时版本 <span class="meta">临时地址</span>
+    </a>
+    <p class="note">上面是公网托管版，关掉电脑也能看。展示机版只在演示机开机时可用。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">2</span>下载素材包</h2>
+    <a class="btn" href="kit/clay-clone-kit.zip" download>
+      下载素材包（1 MB）<span class="meta">zip</span>
+    </a>
+    <div class="row" style="margin-top:10px">
+      <a class="btn ghost" href="kit/snapshot.txt" download>单文件快照 <span class="meta">txt</span></a>
+      <a class="btn ghost" href="kit/spec.md" download>复刻规格 <span class="meta">md</span></a>
+      <a class="btn ghost" href="kit/tokens.json" download>设计 token <span class="meta">json</span></a>
+    </div>
+    <table style="margin-top:16px">
+      <tr><th>snapshot</th><td>整个首页打成一个文件，样式和图片都在里面</td></tr>
+      <tr><th>spec.md</th><td>25 个区块的顺序和逐字文案，当施工图用</td></tr>
+      <tr><th>tokens</th><td>41 个设计变量，色值只许从这里取</td></tr>
+      <tr><th>截图</th><td>桌面 1440 / 手机 390 各一张整页图</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="num">3</span>复制这段话给豆包</h2>
+    <pre id="prompt">正在加载…</pre>
+    <a class="btn" id="copyBtn" href="#">复制指令全文</a>
+    <p class="note">先把 <code>snapshot.txt</code> 和截图传给豆包，再粘这段话。</p>
+  </section>
+
+  <section>
+    <h2><span class="num">4</span>按这个顺序操作</h2>
+    <ol class="steps">
+      <li>打开豆包，新建一个对话</li>
+      <li>上传 <code>snapshot.txt</code>、<code>spec.md</code>、<code>fullpage-desktop.png</code></li>
+      <li>把上面那段指令复制粘贴，发送</li>
+      <li>等它吐出完整 HTML，复制保存成 <code>index.html</code>，双击就能看</li>
+    </ol>
+    <div class="warn">
+      <strong>为什么不能直接把网址丢给豆包？</strong><br>
+      模型抓网址只能拿到未渲染的 HTML 文字，拿不到样式表和图片，复刻出来大概只有三四成像。
+      素材包把样式、图片、字体全内联进去了，还原度能到九成。
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="num">!</span>事先说清楚</h2>
+    <p class="note" style="margin-top:0">
+      豆包产出的是<strong>单文件静态页面</strong>，用于看效果、做参考。它没有后台、没有表单接收、
+      不能改文案（改一个字要重新生成），也不含真实案例内容。<br><br>
+      要真正上线、要能长期维护，用的是完整项目源码 —— 那套东西是
+      <code>content/*.ts</code> 改文案、<code>brand.css</code> 改配色、<code>npm run build</code> 出静态包。
+    </p>
+  </section>
+
+  <footer>
+    <a href="https://github.com/daimeng-134/clay-site-demo" style="color:var(--ink-2)">源码仓库</a>
+    · 由 create-clay-site 生成 · Warm Clay 0.2.1
+  </footer>
+</div>
+
+<script>
+(async function () {
+  var pre = document.getElementById('prompt');
+  var btn = document.getElementById('copyBtn');
+
+  try {
+    var res = await fetch('kit/prompt.txt', { cache: 'no-store' });
+    pre.textContent = res.ok ? await res.text() : '（prompt.txt 读取失败，请直接打开 kit/prompt.txt）';
+  } catch (e) {
+    pre.textContent = '（读取失败，请直接打开 kit/prompt.txt）';
+  }
+
+  async function copy() {
+    var text = pre.textContent;
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); ta.remove();
+      }
+      btn.classList.add('copied');
+      var old = btn.textContent;
+      btn.textContent = '已复制，去豆包粘贴';
+      setTimeout(function () { btn.textContent = old; btn.classList.remove('copied'); }, 2200);
+    } catch (e) {
+      btn.textContent = '复制失败，请手动全选上面文本';
+    }
+  }
+  btn.addEventListener('click', function (e) { e.preventDefault(); copy(); });
+
+  // 有 ?tunnel= 参数时才显示展示机链接：隧道地址是临时的，写死会失效
+  var t = new URLSearchParams(location.search).get('tunnel');
+  if (t) {
+    var a = document.getElementById('tunnelLink');
+    a.href = t; a.hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
