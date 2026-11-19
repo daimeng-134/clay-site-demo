@@ -1,0 +1,42 @@
+你是资深前端工程师。我会给你三个文件，请据此产出一个单文件网页。
+
+【输入】
+1. snapshot.html —— 目标网页的完整快照，CSS 与图片已内联，没有脚本
+2. spec.md —— 区块顺序与逐字文案
+3. tokens.json —— 全部设计 token（颜色 / 字号 / 行高 / 圆角 / 间距 / 阴影）
+4. fullpage-desktop.png / fullpage-mobile.png —— 整页截图，用于核对视觉层次
+
+【优先级】
+截图 > spec.md > snapshot.html 的结构。
+截图与代码冲突时，以截图看到的间距和层次为准。
+
+【任务】
+复刻「知造科技｜业务系统定制开发」这个企业官网首页，产出一个 index.html。
+
+【硬性要求】
+1. 只输出一个 HTML 文件；样式写在 <style> 里；不引任何外部 CSS、字体、图片、JS
+2. 颜色只能使用 tokens.json 里给出的十六进制值，禁止自创色值
+3. 字号、行高、圆角、间距优先级：tokens.json > snapshot.html 的写法 > 你的判断
+4. 区块顺序与数量必须与 spec.md 完全一致，一个不多、一个不少
+5. 文案逐字照抄 spec.md，不要改写、不要补充、不要省略、不要翻译
+6. 字体用系统字体栈：
+   -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+   "Hiragino Sans GB", "Microsoft YaHei", sans-serif
+7. 图片位置用内联 SVG 或 CSS 渐变占位，不要引用网络图片
+8. 响应式断点：≥1024 桌面 / 640–1023 平板 / <640 手机；375px 宽不得横向滚动
+
+【交互】
+不要写 JavaScript。需要交互的地方用纯 CSS：
+- 导航悬浮：:hover 改颜色
+- 卡片：:hover 加 transform: translateY(-2px) 和 token 里的阴影
+- 移动端菜单：用 <details>/<summary> 实现
+
+【输出格式】
+先给一句「已按 spec 复刻，共 N 个区块」，然后直接给完整 HTML 代码块。
+不要在代码块外面做过多的解释。
+
+【自检】
+产出后自己核对三件事，并在最后一行说明：
+- 用到的色值是否全部来自 tokens.json
+- 区块数量是否等于 spec.md 的顶层小节数
+- 文件内是否没有 <script>
